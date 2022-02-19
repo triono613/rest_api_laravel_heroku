@@ -1,0 +1,238 @@
+openapi: 3.0.0
+info:
+  title: BE_Laravel_8
+  contact: {}
+  version: '1.0'
+servers:
+  - url: https://be-laravel.herokuapp.com/api
+    variables: {}
+paths:
+  /getData:
+    get:
+      tags:
+        - Misc
+      summary: fetch
+      operationId: fetch
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /register:
+    post:
+      tags:
+        - Misc
+      summary: register
+      operationId: register
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - name
+                - email
+                - status
+                - password
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: triono2
+                email:
+                  type: string
+                  example: triono.triono1@gmail.com
+                status:
+                  type: string
+                  example: married
+                password:
+                  type: integer
+                  format: int32
+                  example: 123456
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+  /destroy/2/delete:
+    delete:
+      tags:
+        - Misc
+      summary: destroy
+      operationId: destroy
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /updateProfilePut/1/update:
+    put:
+      tags:
+        - Misc
+      summary: updatePut
+      operationId: updatePut
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updatePutRequest'
+            example:
+              name: triono herawati aja
+              status: married
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /updateProfilePost:
+    post:
+      tags:
+        - Misc
+      summary: updatePost
+      operationId: updatePost
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/updatePostRequest'
+            example:
+              id: 1
+              name: triono herawati
+              status: married
+        required: true
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security:
+        - bearer: []
+  /signin:
+    post:
+      tags:
+        - Misc
+      summary: login
+      operationId: login
+      parameters:
+        - name: Accept
+          in: header
+          description: ''
+          required: true
+          style: simple
+          schema:
+            type: string
+            example: application/json
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            encoding: {}
+            schema:
+              required:
+                - email
+                - password
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: triono.triono1@gmail.com
+                password:
+                  type: integer
+                  format: int32
+                  example: 123456
+        required: false
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      deprecated: false
+      security: []
+components:
+  schemas:
+    updatePutRequest:
+      title: updatePutRequest
+      required:
+        - name
+        - status
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+      example:
+        name: triono herawati aja
+        status: married
+    updatePostRequest:
+      title: updatePostRequest
+      required:
+        - id
+        - name
+        - status
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        status:
+          type: string
+      example:
+        id: 1
+        name: triono herawati
+        status: married
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security: []
+tags:
+  - name: Misc
+    description: ''
