@@ -21,6 +21,7 @@
         <li>git add . </li>
         <li>git commit -am "make it better" </li>
         <li>git push heroku master </li>
+        <li>akses di heroku : https://be-laravel.herokuapp.com/docs </li>
      </ul>
 </p>
 
